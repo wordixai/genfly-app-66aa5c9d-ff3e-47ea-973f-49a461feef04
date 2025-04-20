@@ -1,4 +1,4 @@
-import { Coffee, Clock, MapPin, Phone } from 'lucide-react';
+import { Coffee, Clock, MapPin, Phone, Star } from 'lucide-react';
 
 const Index = () => {
   const menuItems = [
@@ -7,6 +7,27 @@ const Index = () => {
     { name: 'Latte', price: '$4.75', description: 'Smooth espresso with velvety milk' },
     { name: 'Cold Brew', price: '$4.00', description: 'Smooth and refreshing' },
     { name: 'Avocado Toast', price: '$8.50', description: 'Sourdough with fresh avocado' }
+  ];
+
+  const reviews = [
+    { 
+      name: 'Sarah M.',
+      rating: 5,
+      comment: 'The best coffee in town! The atmosphere is cozy and the staff is super friendly.',
+      date: '2 weeks ago'
+    },
+    { 
+      name: 'James L.',
+      rating: 4,
+      comment: 'Great selection of pastries and the cold brew is excellent. Will definitely come back!',
+      date: '1 month ago'
+    },
+    { 
+      name: 'Emma K.',
+      rating: 5,
+      comment: 'Love their avocado toast and the latte art is always on point. Perfect spot for brunch.',
+      date: '3 weeks ago'
+    }
   ];
 
   return (
@@ -51,6 +72,30 @@ const Index = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Reviews Section */}
+      <section className="py-20 px-4 max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-amber-900">Customer Reviews</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {reviews.map((review, index) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star 
+                    key={i} 
+                    className={`w-5 h-5 ${i < review.rating ? 'text-amber-500 fill-amber-500' : 'text-gray-300'}`}
+                  />
+                ))}
+              </div>
+              <p className="text-gray-700 mb-4">"{review.comment}"</p>
+              <div className="flex justify-between items-center">
+                <span className="font-medium text-amber-900">{review.name}</span>
+                <span className="text-sm text-gray-500">{review.date}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
